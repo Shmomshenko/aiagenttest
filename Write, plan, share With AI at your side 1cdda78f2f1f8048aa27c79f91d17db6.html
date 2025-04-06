@@ -1,0 +1,708 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Write, plan, share. With AI at your side.</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: undefined; }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-transparentGray { background-color: undefined; }
+.select-value-color-translucentGray { background-color: undefined; }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="1cdda78f-2f1f-8048-aa27-c79f91d17db6" class="page sans"><header><h1 class="page-title">Write, plan, share. With AI at your side.</h1><p class="page-description"></p></header><div class="page-body"><h3 id="1cdda78f-2f1f-81be-b061-e07e47c21ed1" class=""><strong>Notion is the connected workspace where better, faster work happens.</strong></h3><p id="1cdda78f-2f1f-8106-a7e9-e86d746422c6" class="">
+</p><div id="1cdda78f-2f1f-8143-aeee-c1f73559093d" class="column-list"><div id="1cdda78f-2f1f-81f9-9fa9-d4ef5b1e9602" style="width:50%" class="column"><p id="1cdda78f-2f1f-8103-87c9-c91eacf5e905" class="">
+</p><figure class="block-color-red_background callout" style="white-space:pre-wrap;display:flex" id="1cdda78f-2f1f-8163-8709-ea519044ce57"><div style="font-size:1.5em"><img class="icon" src="https://www.notion.so/icons/book_red.svg"/></div><div style="width:100%"><strong>Wiki</strong><p id="1cdda78f-2f1f-8185-b08a-dcf1936c2907" class="">It’s hard to move fast if you’ve got a clunky and disorganized workspace. Centralize all your knowledge in Notion instead.</p></div></figure><p id="1cdda78f-2f1f-8124-9214-fd6efa198777" class="">
+</p><figure class="block-color-blue_background callout" style="white-space:pre-wrap;display:flex" id="1cdda78f-2f1f-81d6-822d-e126b1e7e72c"><div style="font-size:1.5em"><img class="icon" src="https://www.notion.so/icons/target_blue.svg"/></div><div style="width:100%"><strong>Projects</strong><p id="1cdda78f-2f1f-81b5-8437-c6b889be506b" class="">Projects are complex. Let Notion bring speed and clarity with connected, AI-powered tools to manage any project.</p></div></figure><p id="1cdda78f-2f1f-81bc-b931-c8d65601f3ad" class="">
+</p><figure class="block-color-yellow_background callout" style="white-space:pre-wrap;display:flex" id="1cdda78f-2f1f-81e1-9a8a-e3a6c623e657"><div style="font-size:1.5em"><img class="icon" src="https://www.notion.so/icons/document_yellow.svg"/></div><div style="width:100%"><strong>Docs</strong><p id="1cdda78f-2f1f-81fe-af52-d88d2bb63357" class="">Simple. Powerful. Beautiful. Communicate more efficiently with Notion’s flexible, user-friendly building blocks.</p></div></figure></div><div id="1cdda78f-2f1f-81fe-a586-e99e7d1d002d" style="width:50%" class="column"><figure id="1cdda78f-2f1f-8158-81ca-e32ce1bc02b5" class="image"><a href="https://www.notion.so/cdn-cgi/image/format=webp,width=1920/https://images.ctfassets.net/spoqsaf9291f/2MP0x4GLh2rrrJqAnbPcZ9/b2592650c7eae1f09cc7a37b1526f5cb/iPhone.png"><img style="width:700px" src="https://www.notion.so/cdn-cgi/image/format=webp,width=1920/https://images.ctfassets.net/spoqsaf9291f/2MP0x4GLh2rrrJqAnbPcZ9/b2592650c7eae1f09cc7a37b1526f5cb/iPhone.png"/></a></figure></div></div><p id="1cdda78f-2f1f-81d6-a5fd-e79244c2fd05" class="">
+</p><p id="1cdda78f-2f1f-8113-bc1e-e41055619555" class="">
+</p><hr id="1cdda78f-2f1f-8197-a658-c4d92d05d946"/><h2 id="1cdda78f-2f1f-81cf-b2a8-d2e953ece7f8" class="">“We got rid of nearly a dozen different tools because of what Notion does for us.”</h2><p id="1cdda78f-2f1f-81b9-91c5-cd07ad9e309e" class="">Justin Watt<br/>Director of Ops &amp; Marketing, MetaLab<br/></p><figure id="1cdda78f-2f1f-8158-bb6f-c23b0f1aec0c" class="image" style="text-align:left"><a href="https://www.notion.so/cdn-cgi/image/format=webp,width=256/front-static/shared/logos/color/metalab.png"><img style="width:127px" src="https://www.notion.so/cdn-cgi/image/format=webp,width=256/front-static/shared/logos/color/metalab.png"/></a></figure><p id="1cdda78f-2f1f-81ca-bdb5-dd88330967cd" class="">
+</p><hr id="1cdda78f-2f1f-81b0-bcd4-c84c6892f01d"/><div id="1cdda78f-2f1f-814b-b081-cd23bb402d23" class="column-list"><div id="1cdda78f-2f1f-81ed-b043-f63fbaf26ba7" style="width:49.99999999999999%" class="column"><figure id="1cdda78f-2f1f-814b-9ace-ca4f656a3b8d" class="image"><a href="Untitled.png"><img style="width:720px" src="Untitled.png"/></a></figure></div><div id="1cdda78f-2f1f-817f-b3ad-f7aeedc63c8d" style="width:50%" class="column"><p id="1cdda78f-2f1f-8143-8e1b-e4a8c67d1071" class="">
+</p><h1 id="1cdda78f-2f1f-81af-ba2d-c65691243595" class="">Work across all your devices</h1><p id="1cdda78f-2f1f-81e9-b065-e3cf7ccea90d" class="">The Notion app is optimized for mobile so you can read, edit, and comment on the go.</p><p id="1cdda78f-2f1f-81dc-9d33-e080266bc081" class=""><a href="http://www.notion.so/product">Get it</a><mark class="highlight-default"><a href="http://www.notion.so/product"> now →</a></mark></p></div></div><p id="1cdda78f-2f1f-81ee-9288-fb6d84782edc" class="">
+</p><hr id="1cdda78f-2f1f-81b9-9e67-dc239484c641"/><div id="1cdda78f-2f1f-81da-bc44-f2af4e10b7c6" class="column-list"><div id="1cdda78f-2f1f-8124-8010-fe82b70c8b66" style="width:50.00000000000002%" class="column"><p id="1cdda78f-2f1f-817b-a9dc-e624619e8716" class="">
+</p><p id="1cdda78f-2f1f-81cc-8957-fec8abd8a802" class="">
+</p><h1 id="1cdda78f-2f1f-811b-afad-df4485a899f9" class="">Jump back in</h1><p id="1cdda78f-2f1f-8130-a372-fe6e084bd958" class="">Collaborate with your team while you’re away from your desk.</p><p id="1cdda78f-2f1f-81fb-8cfb-db0a3e55caab" class=""><a href="http://www.notion.so/product">Get it now →</a></p><p id="1cdda78f-2f1f-81e9-b1bd-e37547291af0" class="">
+</p></div><div id="1cdda78f-2f1f-810a-8dd0-c8422fb7a976" style="width:50%" class="column"><figure id="1cdda78f-2f1f-81ea-ab26-c1829e8a1b5b" class="image"><a href="Untitled%201.png"><img style="width:454.984375px" src="Untitled%201.png"/></a></figure></div></div><p id="1cdda78f-2f1f-81a7-93a1-fb84c08f0d8e" class="">
+</p><hr id="1cdda78f-2f1f-815a-8196-d765c384fde4"/><p id="1cdda78f-2f1f-81d9-9901-de04f9000799" class="">
+</p><figure id="1cdda78f-2f1f-81be-84d1-fdf62317c270" class="image"><a href="https://www.notion.so/cdn-cgi/image/format=webp,width=640/https://images.ctfassets.net/spoqsaf9291f/lJ12kcg3BN25ezLJ6C729/1651d90f1eac26bbbf86865e0d630fd5/illustration.png"><img style="width:278px" src="https://www.notion.so/cdn-cgi/image/format=webp,width=640/https://images.ctfassets.net/spoqsaf9291f/lJ12kcg3BN25ezLJ6C729/1651d90f1eac26bbbf86865e0d630fd5/illustration.png"/></a></figure><div id="1cdda78f-2f1f-8188-a2f8-d1744a0eceff" class="column-list"><div id="1cdda78f-2f1f-81a0-ac02-c1024c85860f" style="width:25%" class="column"><p id="1cdda78f-2f1f-8100-ba98-f0482f1937c0" class="">
+</p></div><div id="1cdda78f-2f1f-816f-b6e4-ea7ccf589802" style="width:54.166666666666664%" class="column"><h1 id="1cdda78f-2f1f-813e-ac8c-c4f67d2e96dd" class=""><a href="https://www.notion.so/signup">Get started for free →</a></h1><p id="1cdda78f-2f1f-8100-b99c-fef1b504538a" class="">
+</p></div><div id="1cdda78f-2f1f-8113-b6df-e82aa1a21db8" style="width:20.833333333333336%" class="column"><p id="1cdda78f-2f1f-811a-9cb9-c42c08a86167" class="">
+</p><p id="1cdda78f-2f1f-8198-a2c5-e6748bcaf68e" class="">
+</p></div></div><hr id="1cdda78f-2f1f-8199-9854-c1e2c0203fc1"/><h2 id="1cdda78f-2f1f-816a-a87c-d9918b5c280b" class="">“Notion adapts to your needs. It’s as minimal or as powerful as you need it to be.”</h2><p id="1cdda78f-2f1f-81dc-9bd4-c114bda9f6e4" class="">Rahim Makani<br/>Director of Product, Matchgroup<br/></p><figure id="1cdda78f-2f1f-8182-9fb6-dedbb725cf99" class="image" style="text-align:left"><a href="https://www.notion.so/cdn-cgi/image/format=webp,width=96/front-static/shared/logos/color/match-group.png"><img style="width:33px" src="https://www.notion.so/cdn-cgi/image/format=webp,width=96/front-static/shared/logos/color/match-group.png"/></a></figure><p id="1cdda78f-2f1f-8157-836a-c521c8bea646" class="">
+</p><hr id="1cdda78f-2f1f-81a9-9a22-cc18de24ef38"/><p id="1cdda78f-2f1f-813e-aa2d-ee836aaca97a" class="">
+</p><div id="1cdda78f-2f1f-8160-9192-c67bf83948cf" class="column-list"><div id="1cdda78f-2f1f-819d-b143-f7414bb43334" style="width:49.99999999999999%" class="column"><figure id="1cdda78f-2f1f-81a3-93dc-d89499f9bb50" class="image"><a href="Untitled%202.png"><img style="width:454.984375px" src="Untitled%202.png"/></a></figure></div><div id="1cdda78f-2f1f-81a0-93d5-ee36553eaa9f" style="width:49.99999999999999%" class="column"><figure id="1cdda78f-2f1f-81b1-a923-c6fb897406be" class="image"><a href="Untitled%203.png"><img style="width:454.984375px" src="Untitled%203.png"/></a></figure></div></div><p id="1cdda78f-2f1f-815c-98aa-f900c3c23bc7" class="">
+</p><div id="1cdda78f-2f1f-814f-b17d-f9612adda7b4" class="column-list"><div id="1cdda78f-2f1f-81b9-90cf-c71ffbaf58c3" style="width:25%" class="column"><p id="1cdda78f-2f1f-81ee-a4c3-cc9238bf4873" class="">
+</p></div><div id="1cdda78f-2f1f-8155-afec-d810fb1fe0e7" style="width:50%" class="column"><h1 id="1cdda78f-2f1f-813c-8a8e-ecd9597296d7" class=""><a href="https://www.notion.so/signup">Get started for free →</a></h1></div><div id="1cdda78f-2f1f-8157-bd45-d7d062728cfb" style="width:25.00000000000001%" class="column"><p id="1cdda78f-2f1f-81f5-9a10-dfef41d28095" class="">
+</p></div></div><p id="1cdda78f-2f1f-81f6-8c56-fb2f7a96c10e" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
